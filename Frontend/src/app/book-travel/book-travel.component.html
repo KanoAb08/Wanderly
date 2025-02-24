@@ -1,0 +1,94 @@
+<div class="main">
+  <span class="form-heading">Submit Your Travel Details</span>
+  <div class="travel-form">
+    <form [formGroup]="travelForm">
+      <div class="form-group">
+        <label for="destination" class="form-label">Destination</label>
+        <input
+          type="text"
+          formControlName="destination"
+          id="destination"
+          class="form-input"
+          placeholder="Enter your travel destination"
+          required
+          aria-label="Travel Destination"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input
+          type="date"
+          formControlName="startDate"
+          id="startDate"
+          class="form-input"
+          required
+          aria-label="Start Date"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="endDate" class="form-label">End Date</label>
+        <input
+          type="date"
+          formControlName="endDate"
+          id="endDate"
+          class="form-input"
+          required
+          aria-label="End Date"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="expenseType" class="form-label">Expense Type</label>
+        <select
+          formControlName="expenseType"
+          id="expenseType"
+          class="form-input"
+          required
+          aria-label="Expense Type"
+        >
+          <option value="">Select Expense Type</option>
+          <option value="Hotel">Hotel</option>
+          <option value="Flight">Flight</option>
+          <option value="Both">Both</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="expense" class="form-label">Expense Amount</label>
+        <input
+          type="number"
+          formControlName="expense"
+          id="expense"
+          class="form-input"
+          placeholder="Enter expense amount"
+          required
+          aria-label="Expense Amount"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="purpose" class="form-label">Purpose</label>
+        <textarea
+          formControlName="purpose"
+          id="purpose"
+          class="form-input textarea"
+          rows="3"
+          placeholder="Describe the purpose of your travel"
+          required
+          aria-label="Travel Purpose"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        (click)="onSave()"
+        class="submit-button"
+        aria-label="Submit Travel Request"
+      >
+        Submit Request
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" [routerLink]="['/book-travel']">
+      <img class="logo" src="assets/logo.png" alt="Wanderly Logo" />
+      <span>Wanderly</span>
+    </a>
+    <nav class="nav-menu" aria-label="Main Navigation">
+      <ul>
+        <li>
+          <a
+            [routerLink]="['/book-travel']"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="bi bi-airplane-fill"></i> Book Travel
+          </a>
+        </li>
+        <li>
+          <a
+            [routerLink]="['/history']"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="bi bi-clock-history"></i> Travel History
+          </a>
+        </li>
+        <li>
+          <a
+            [routerLink]="['/user-dashboard']"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="bi bi-speedometer2"></i> User Dashboard
+          </a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a
+            [routerLink]="['/admin-dashboard']"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="bi bi-graph-up"></i> Admin Dashboard
+          </a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a
+            [routerLink]="['/booking-management']"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="bi bi-calendar-check-fill"></i> Booking Management
+          </a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a
+            [routerLink]="['/admin-rights']"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="bi bi-person-gear"></i> Manage Users
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="user-profile">
+      <img
+        src="assets/pfp.jpg"
+        alt="User Profile Picture"
+        class="profile-img"
+      />
+      <div class="profile-info">
+        <span class="user-name">{{ userName }}</span>
+        <span class="user-email">{{ userMail }}</span>
+      </div>
+    </div>
+
+    <button class="signout-btn" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i> Sign Out
+    </button>
+  </aside>
+</div>

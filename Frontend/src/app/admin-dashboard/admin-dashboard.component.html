@@ -1,0 +1,90 @@
+<div class="dashboard-container">
+  <div class="greeting">
+    <h2 class="greeting-title">Welcome Back, {{ userName }}!</h2>
+    <p class="greeting-text">Here’s an overview of your current stats.</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-content">
+        <h3 class="stat-title">Total Expense</h3>
+        <p class="stat-number">Rs. {{ totalExpense | number : "1.0-0" }}</p>
+      </div>
+      <i class="bi bi-cash-coin stat-icon expense-icon"></i>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-content">
+        <h3 class="stat-title">Total Requests</h3>
+        <p class="stat-number">{{ totalRequest }}</p>
+      </div>
+      <i class="bi bi-list-task stat-icon request-icon"></i>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-content">
+        <h3 class="stat-title">Accepted Requests</h3>
+        <p class="stat-number">{{ acceptedRequest }}</p>
+      </div>
+      <i class="bi bi-check-circle-fill stat-icon accepted-icon"></i>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-content">
+        <h3 class="stat-title">Pending Requests</h3>
+        <p class="stat-number">{{ pendingRequest }}</p>
+      </div>
+      <i class="bi bi-hourglass-split stat-icon pending-icon"></i>
+    </div>
+  </div>
+
+  <div class="expense-report">
+    <h3 class="report-title">Expense Report</h3>
+
+    <div class="filter-buttons">
+      <button
+        class="filter-button"
+        (click)="filterExpenses('weekly')"
+        [class.active]="selectedFilter === 'weekly'"
+      >
+        Weekly
+      </button>
+      <button
+        class="filter-button"
+        (click)="filterExpenses('monthly')"
+        [class.active]="selectedFilter === 'monthly'"
+      >
+        Monthly
+      </button>
+    </div>
+
+    <div
+      class="table-container"
+      *ngIf="filteredExpenses.length > 0; else noExpenses"
+    >
+      <div class="table-header">
+        <div class="header-item">Username</div>
+        <div class="header-item">Destination</div>
+        <div class="header-item">Expense</div>
+        <div class="header-item">Expense Type</div>
+      </div>
+
+      <div class="table-body">
+        <div class="table-row" *ngFor="let expense of filteredExpenses">
+          <div class="table-data">{{ expense.userName }}</div>
+          <div class="table-data">{{ expense.destination }}</div>
+          <div class="table-data">
+            Rs. {{ expense.expense | number : "1.0-0" }}
+          </div>
+          <div class="table-data">{{ expense.expenseType }}</div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noExpenses>
+      <p class="no-data-message">
+        No expenses available for the selected period.
+      </p>
+    </ng-template>
+  </div>
+</div>

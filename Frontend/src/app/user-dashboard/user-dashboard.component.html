@@ -1,0 +1,58 @@
+<div class="dashboard-container">
+  <h2 class="dashboard-title">User Trips Overview</h2>
+  <p class="dashboard-subtitle">
+    View all completed and upcoming trips for users.
+  </p>
+
+  <div class="trips-layout">
+    <div class="trips-section">
+      <h3 class="section-title">Upcoming Trips</h3>
+      <div class="trips-grid" *ngIf="upcomingTrips.length > 0; else noUpcoming">
+        <div class="trip-card" *ngFor="let trip of upcomingTrips">
+          <div class="trip-header">
+            <i class="bi bi-calendar-event icon upcoming-icon"></i>
+            <h4 class="trip-destination">{{ trip.destination }}</h4>
+          </div>
+          <div class="trip-details">
+            <p>
+              <strong>Started:</strong> {{ trip.startDate | date : "MMM d, y" }}
+            </p>
+            <p>
+              <strong>Ended:</strong> {{ trip.endDate | date : "MMM d, y" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <ng-template #noUpcoming>
+        <p class="no-trips-message">No upcoming trips available.</p>
+      </ng-template>
+    </div>
+
+    <div class="trips-section">
+      <h3 class="section-title">Completed Trips</h3>
+      <div
+        class="trips-grid"
+        *ngIf="completedTrips.length > 0; else noCompleted"
+      >
+        <div class="trip-card" *ngFor="let trip of completedTrips">
+          <div class="trip-header">
+            <i class="bi bi-check-circle-fill icon completed-icon"></i>
+            <h4 class="trip-destination">{{ trip.destination }}</h4>
+          </div>
+          <div class="trip-details">
+            <p>
+              <strong>Start Date:</strong>
+              {{ trip.startDate | date : "MMM d, y" }}
+            </p>
+            <p>
+              <strong>Ende Date:</strong> {{ trip.endDate | date : "MMM d, y" }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <ng-template #noCompleted>
+        <p class="no-trips-message">No completed trips available.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

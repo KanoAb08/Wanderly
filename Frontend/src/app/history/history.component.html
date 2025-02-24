@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Travel Request History</h2>
+  <p class="dashboard-subtitle">
+    View all your previous travel requests and their statuses
+  </p>
+
+  <div class="no-history" *ngIf="history.length === 0">
+    <p>No travel requests found. Start by creating a new request!</p>
+  </div>
+
+  <div class="table-container" *ngIf="history.length > 0">
+    <div class="table-header">
+      <div class="header-item">Destination</div>
+      <div class="header-item">Expense</div>
+      <div class="header-item">Expense Type</div>
+      <div class="header-item">Status</div>
+    </div>
+
+    <div class="table-body">
+      <div class="table-row" *ngFor="let item of history">
+        <div class="table-data">{{ item.destination }}</div>
+        <div class="table-data">{{ item.expense | number : "1.0-0" }}</div>
+        <div class="table-data">{{ item.expenseType }}</div>
+        <div class="table-data">
+          <span
+            [ngClass]="{
+              approved: item.status === 'Approved',
+              rejected: item.status === 'Rejected',
+              pending: item.status === 'Pending'
+            }"
+            class="status"
+          >
+            {{ item.status }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

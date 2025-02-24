@@ -1,0 +1,84 @@
+<div class="body">
+  <div class="container" [ngClass]="{ active: isActive }">
+    <div class="form-box login">
+      <form action="#">
+        <h1>Login</h1>
+        <div class="input-box">
+          <input
+            type="text"
+            placeholder="Email"
+            required
+            name="Email"
+            [(ngModel)]="email"
+          />
+          <i class="bx bxs-envelope"></i>
+        </div>
+        <div class="input-box">
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            name="Password"
+            [(ngModel)]="password"
+          />
+          <i class="bx bxs-lock-alt"></i>
+        </div>
+        <button type="submit" class="btn" (click)="loginUser()">Login</button>
+      </form>
+    </div>
+
+    <div class="form-box register">
+      <form action="#">
+        <h1>Registration</h1>
+        <div class="input-box">
+          <input
+            type="text"
+            placeholder="Name"
+            name="Name"
+            [(ngModel)]="name"
+          />
+          <i class="bx bxs-user"></i>
+        </div>
+        <div class="input-box">
+          <input
+            type="email"
+            placeholder="Email"
+            name="Email"
+            [(ngModel)]="email"
+            required
+          />
+          <i class="bx bxs-envelope"></i>
+        </div>
+        <div class="input-box">
+          <input
+            type="password"
+            placeholder="Password"
+            name="Password"
+            [(ngModel)]="password"
+            required
+          />
+          <i class="bx bxs-lock-alt"></i>
+        </div>
+        <button type="submit" class="btn" (click)="registerUser()">
+          Register
+        </button>
+      </form>
+    </div>
+
+    <div class="toggle-box">
+      <div class="toggle-panel toggle-left">
+        <h1>Hello, Welcome!</h1>
+        <p>Don't have an account?</p>
+        <button class="btn register-btn" (click)="onRegisterClick()">
+          Register
+        </button>
+      </div>
+
+      <div class="toggle-panel toggle-right">
+        <h1>Welcome Back!</h1>
+        <p>Already have an account?</p>
+        <button class="btn login-btn" (click)="onLoginClick()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

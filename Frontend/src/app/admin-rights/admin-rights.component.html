@@ -1,0 +1,36 @@
+<div class="dashboard-container">
+  <h2 class="dashboard-title">Manage Users</h2>
+  <p class="dashboard-subtitle">
+    View all users and manage their admin access.
+  </p>
+
+  <div class="users-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Admin Access</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of allUsers">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                [checked]="user.role === 'Admin'"
+                (change)="toggleAdminAccess(user.userId)"
+              />
+              <span class="slider"></span>
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

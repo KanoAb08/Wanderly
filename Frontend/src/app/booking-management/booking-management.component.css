@@ -1,0 +1,152 @@
+.dashboard-container {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #ffffff;
+}
+
+.dashboard-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+.booking-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid #e9ecef;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.card-header .icon {
+  font-size: 1.75rem;
+  color: #2c3e50;
+}
+
+.card-header .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  flex-wrap: wrap;
+}
+
+.card-detail .icon {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.highlight {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.expense {
+  margin-left: auto;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.25rem;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.action-btn i {
+  font-size: 0.9rem;
+}
+
+.accept-btn {
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+}
+
+.accept-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+.reject-btn {
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+}
+
+.reject-btn:hover {
+  background-color: #e53935;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+
+.no-bookings {
+  text-align: center;
+  color: #777;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
