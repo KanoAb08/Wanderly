@@ -24,7 +24,7 @@ app.use(cookieParser());
 // Configure CORS to allow requests from localhost:4200
 app.use(
   cors({
-    origin: 'http://localhost:4200',
+    origin: process.env.FE_ORGIN,
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     credentials: true,
