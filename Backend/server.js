@@ -21,17 +21,28 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 
-// Configure CORS to allow requests from localhost:4200
+// Convert env string into array
+const allowedOrigins = process.env.FE_ORIGINS.split(',');
+
 app.use(
   cors({
-    origin: true,
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
+    origin: function (origin, callback) {
+      // allow requests without origin (Postman, mobile apps)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error('CORS not allowed'));
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    sameSite: 'none',
+    secure: true
   })
 );
-
-
 
 // MongoDB Connection
 const connectDB = async () => {
