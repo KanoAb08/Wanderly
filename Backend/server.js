@@ -21,28 +21,20 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 
-// Convert env string into array
-const allowedOrigins = process.env.FE_ORIGINS.split(',');
-
 app.use(
   cors({
     origin: function (origin, callback) {
-      // allow requests without origin (Postman, mobile apps)
-      if (!origin) return callback(null, true);
+      console.log('Incoming Origin:', origin);
 
-      if (allowedOrigins.includes(origin)) {
+      if (origin === process.env.FE_ORIGIN) {
+        console.log('CORS Allowed');
         return callback(null, true);
       }
 
-      console.log('Allowed Origins:', allowedOrigins);
-
-      return callback(new Error('CORS not allowed'));
+      console.log('CORS Blocked');
+      return callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    sameSite: 'none',
-    secure: true
   })
 );
 
