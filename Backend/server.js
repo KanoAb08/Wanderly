@@ -50,6 +50,14 @@ const connectDB = async () => {
 };
 connectDB();
 
+app.get('/', (req, res) => {
+  res.send('Backend Running');
+});
+
+app.get('/api/test', (req, res) => {
+  res.send('API Working');
+});
+
 // Define API routes
 app.use('/api/users', userRoutes);
 app.use('/api/admin',adminRoutes);
