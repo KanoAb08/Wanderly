@@ -34,6 +34,8 @@ app.use(
         return callback(null, true);
       }
 
+      console.log('Allowed Origins:', allowedOrigins);
+
       return callback(new Error('CORS not allowed'));
     },
     credentials: true,
