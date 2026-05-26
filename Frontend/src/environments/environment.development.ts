@@ -1,3 +1,4 @@
 export const environment = {
-    baseUrl: 'https://wanderly-1.onrender.com'
+    production: true,
+    baseUrl: 'https://wanderly-be.onrender.com'
 };
